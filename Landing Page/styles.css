@@ -1,0 +1,58 @@
+
+#div-1 {
+    background-color: #1F2937;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #F9FAF8;
+}
+
+#div-2 {
+    background-color: white;
+}
+
+#div-3 {
+    background-color: #E5E7EB;
+}
+
+#div-4 {
+    background-color: #3882F6;
+}
+
+button {
+    background-color: #3882F6;
+}
+
+#div-1 p, a {
+    font-size: 18px;
+    color: #E5E7EB;
+}
+
+h3 {
+    font-size: 24px;
+    color: #F9FAF8; 
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+
+h6 {
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    color: #1F2937;
+}
+
+img {
+    border: solid 1px #3882F6;
+}
+
+footer {
+    background-color: #1F2937;
+}
