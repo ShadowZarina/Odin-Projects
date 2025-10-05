@@ -15,4 +15,5 @@ https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 ## Projects to Deploy
 - Calculator
 - Landing Page
+- Etch a Sketch
 
