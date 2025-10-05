@@ -8,7 +8,11 @@ Thank you!
 
 ## Projects to Finish
 - Calculator
+https://www.theodinproject.com/lessons/foundations-calculator
+- Etch a Sketch
+https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 
 ## Projects to Deploy
 - Calculator
 - Landing Page
+
