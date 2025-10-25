@@ -10,7 +10,10 @@
 
 <body>
     <div id="calculator">
-        <input id="display" readonly>
+        <div id="display">
+            <div class="previousNumber"></div>
+            <div class="currentNumber"></div>
+        </div>
         <div id="keys">
             <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
             <button onclick="appendToDisplay('7')" class="number">7</button>
