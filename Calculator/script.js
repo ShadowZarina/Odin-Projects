@@ -20,35 +20,63 @@ const previousDisplayNumber = document.querySelector(".previousNumber");
 
 /* Append to Display */
 
-function appendToDisplay(input) {
-  display.value += input;
+if (numbers && numbers.length) {
+  numbers.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      handleNumber(e.target.textContent.trim());
+    });
+  });
+}
+
+
+function handleNumber(number) {
+  if (currentNum.length <= 6) {          
+    currentNum += number;             
+    currentDisplayNumber.textContent = currentNum; 
+  }
 }
 
 /* Clear Button */
+if (clear) {
+  clear.addEventListener("click", clearEntry);
+}
 
-clear.addEventListener("click", clearCalculator);
 function clearEntry() {
-  display.value = "";
-  currentNum = "";
-  previousNum = "";
-  operator = "";
-  currentDisplayNumber.textContent = "";
-  previousDisplayNumber.textContent = "";
+  if (display && typeof display.value !== "undefined") display.value = "";
+    currentNum = "";
+    previousNum = "";
+    operator = "";
+    if (currentDisplayNumber) currentDisplayNumber.textContent = "";
+    if (previousDisplayNumber) previousDisplayNumber.textContent = "";
 }
 
 /* Decimal */
-decimal.addEventListener("click", () => {
-  addDecimal();
-});
+if (decimal) {
+  decimal.addEventListener("click", () => {
+    addDecimal();
+  });
+}
 
 /* Equal Button */
-equal.addEventListener("click", () => {
-  if (currentNum != "" && previousNum != "") {
-    compute();
-  }
-});
+if (equal) {
+  equal.addEventListener("click", () => {
+    if (currentNum !== "" && previousNum !== "") {
+      compute();
+    }
+  });
+}
 
 /* Operate Function */
+
+if (operators && operators.length) {
+  operators.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      // get operator text (like "+", "-", "x", "÷") - trim in case of white space
+      const op = e.target.textContent.trim();
+      handleOperator(op);
+    });
+  });
+}
 
 function handleOperator(op) {
   if (previousNum === "") {
@@ -66,14 +94,14 @@ function handleOperator(op) {
 
 function operatorCheck(text) {
   operator = text;
-  previousDisplayNumber.textContent = previousNum + " " + operator;
-  currentDisplayNumber.textContent = "0";
+  if (previousDisplayNumber) previousDisplayNumber.textContent = previousNum + " " + operator;
+  if (currentDisplayNumber) currentDisplayNumber.textContent = "0";
   currentNum = "";
 }
 
-/* ADD ERROR MESSAGE FOR DIVIDNG BY 0 */
+/* ADD ERROR MESSAGE FOR DIVIDING BY 0 */
 
-/* ROUND OFFLONG DECIMALS */
+/* ROUND OFF LONG DECIMALS */
 
 function roundNumber(num) {
   return Math.round(num * 100000) / 100000;
@@ -85,6 +113,7 @@ function roundNumber(num) {
 
 function addDecimal() {
   if (!currentNum.includes(".")) {
+    if (currentNum === "") currentNum = "0";
     currentNum += ".";
     currentDisplayNumber.textContent = currentNum;
   }
@@ -93,12 +122,12 @@ function addDecimal() {
 /* Display Results */
 
 function displayResults() {
-  if (previousNum.length <= 11) {
+  if (previousNum.length <= 5) {
     currentDisplayNumber.textContent = previousNum;
   } else {
     currentDisplayNumber.textContent = previousNum.slice(0, 11) + "...";
   }
-  previousDisplayNumber.textContent = "";
+  if (previousDisplayNumber) previousDisplayNumber.textContent = "";
   operator = "";
   currentNum = "";
 }
@@ -106,21 +135,31 @@ function displayResults() {
 /* Keyboard Presses */
 window.addEventListener("keydown", handleKeyPress);
 function handleKeyPress(e) {
-  e.preventDefault();
-  if (e.key >= 0 && e.key <= 9) {
+  if (
+    (e.key >= "0" && e.key <= "9") ||
+    e.key === "Enter" ||
+    e.key === "=" ||
+    e.key === "+" ||
+    e.key === "-" ||
+    e.key === "/" ||
+    e.key === "*" ||
+    e.key === "." ||
+    e.key === "Backspace"
+  ) {
+    e.preventDefault();
+  }
+
+  if (e.key >= "0" && e.key <= "9") {
     handleNumber(e.key);
   }
-  if (
-    e.key === "Enter" ||
-    (e.key === "=" && currentNum != "" && previousNum != "")
-  ) {
+  if (e.key === "Enter" || (e.key === "=" && currentNum !== "" && previousNum !== "")) {
     compute();
   }
   if (e.key === "+" || e.key === "-" || e.key === "/") {
     handleOperator(e.key);
   }
   if (e.key === "*") {
-    handleOperator("x");
+    handleOperator("*"); 
   }
   if (e.key === ".") {
     addDecimal();
@@ -129,3 +168,5 @@ function handleKeyPress(e) {
     handleDelete();
   }
 }
+
+/* COMPUTE FUNCTION */
