@@ -73,7 +73,7 @@ body {
   justify-content: center;
   padding: 0 1rem;
   color: white;
-  font-size: 1.2rem;
+  font-size: 3rem;
   text-align: right;
   box-sizing: border-box;
 }
@@ -106,7 +106,7 @@ button:active {
 
 .clear-btn {
   margin: 20px 25px -10px;
-  justify-self: center; /* Centers the button in its grid cell */
+  justify-self: center; 
   aspect-ratio: 1 / 1;          
   border-radius: 50%;
   background-color: #d99cb8;   
