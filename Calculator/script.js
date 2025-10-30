@@ -99,8 +99,6 @@ function operatorCheck(text) {
   currentNum = "";
 }
 
-/* ADD ERROR MESSAGE FOR DIVIDING BY 0 */
-
 /* ROUND OFF LONG DECIMALS */
 
 function roundNumber(num) {
@@ -170,3 +168,47 @@ function handleKeyPress(e) {
 }
 
 /* COMPUTE FUNCTION */
+
+function compute() {
+  let result;
+
+  const prev = parseFloat(previousNum);
+  const curr = parseFloat(currentNum);
+
+  if (isNaN(prev) || isNaN(curr)) return; 
+
+  switch (operator) {
+    case "+":
+      result = prev + curr;
+      break;
+    case "-":
+      result = prev - curr;
+      break;
+    case "x":
+    case "*":
+      result = prev * curr;
+      break;
+    case "÷":
+    case "/":
+      if (curr === 0) {
+        currentDisplayNumber.textContent = "Error";
+        previousDisplayNumber.textContent = "";
+        currentNum = "";
+        previousNum = "";
+        operator = "";
+        return;
+      }
+      result = prev / curr;
+      break;
+    default:
+      return;
+  }
+
+  result = roundNumber(result);
+
+  previousNum = result.toString();
+  currentNum = "";
+  operator = "";
+
+  displayResults();
+}
