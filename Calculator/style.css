@@ -11,6 +11,13 @@ body {
 
 /* Calculator */
 
+#calculator-border {
+  display: inline-block;
+  background-color: #dd9393;  
+  border-radius: 20px;
+  padding: 20px;
+}
+
 #calculator {
   font-family: "Roboto", sans-serif;
   background-color: #FAF9F0;
@@ -26,11 +33,15 @@ body {
   padding: 25px;
 }
 
-/* Rows */
 
 .top-row {
-    grid-template-columns: 80px 1fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr; 
+  align-items: center;            
+  gap: 1rem;                    
 }
+
+/* Rows */
 
 .row1 {
   background-color: #E6C1D2;
@@ -52,13 +63,21 @@ body {
 /* Display */
 
 #display  {
+  margin: -10px 0px -30px -20px;
   width: 100%;
-  padding: 20px;
-  font-size: 5rem;
-  text-align: left;
-  background-color: hsl(0, 27%, 53%);
+  background-color: #a35c5c;   
+  height: 100px;                
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
   color: white;
+  font-size: 1.2rem;
+  text-align: right;
+  box-sizing: border-box;
 }
+
 
 /* Buttons*/
 
@@ -87,6 +106,12 @@ button:active {
 
 .clear-btn {
   margin: 20px 25px -10px;
+  justify-self: center; /* Centers the button in its grid cell */
+  aspect-ratio: 1 / 1;          
+  border-radius: 50%;
+  background-color: #d99cb8;   
+  color: white;
+  border: none;
 }
 
 .equal, .zero-btn {
