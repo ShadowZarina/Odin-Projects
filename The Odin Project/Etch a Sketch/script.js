@@ -32,7 +32,7 @@ function changeColor(e) {
 }
 
 button.addEventListener("click", () => {
-    const sizeInput = prompt("Enter the number of squares per side for the new grid (8-64):");
+    const sizeInput = prompt("Enter the number of squares per side for the new grid (8-64):"); // **UPDATED PROMPT MESSAGE**
 
     if (sizeInput === null || sizeInput.trim() === "") {
         return; 
@@ -40,10 +40,10 @@ button.addEventListener("click", () => {
 
     const newSize = parseInt(sizeInput);
 
-    if (!isNaN(newSize) && newSize > 0 && newSize <= 100) {
+    if (!isNaN(newSize) && newSize >= 8 && newSize <= 64) {
         generateGrid(newSize);
     } else {
-        alert("Invalid input. Please enter a number between 1 and 100.");
+        alert("Invalid input. Please enter a number between 8 and 64."); // **UPDATED ALERT MESSAGE**
     }
 });
 
