@@ -5,8 +5,7 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -23,13 +22,7 @@ body {
     margin: 10px;
 }
 
-.row {
-    display: flex;
-    flex: 1;
-}
-
 .box {
-    flex: 1;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
 }
@@ -39,12 +32,13 @@ body {
     border: solid black;
     border-radius: 12px;
     padding: 5px;
-    background-color: orange;
+    background-color: rgb(195, 0, 255);
     color: white;
+    text-align: center;
 }
 
 .input {
-  background-color: #1899D6;
+  background-color: #db6ae8;
   border: solid transparent;
   border-radius: 16px;
   border-width: 0 0 4px;
